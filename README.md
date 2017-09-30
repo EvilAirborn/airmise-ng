@@ -1,8 +1,9 @@
-# airmise-ng [![Version-shield]](https://raw.githubusercontent.com/EvilAirborn/airmise-ng/master/CHANGELOG.md) [![Bash4.2-shield]](http://tldp.org/LDP/abs/html/bashver4.html#AEN21220) [![License-shield]](https://raw.githubusercontent.com/EvilAirborn/airmise-ng/master/LICENSE.md) [![Docker-shield]](https://hub.docker.com/r/EvilAirborn/airmise-ng/) [![Paypal-shield]](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7ELM486P7XKKG) [![Bitcoin-shield]](https://blockchain.info/address/1AKnTXbomtwUzrm81FRzi5acSSXxGteGTH)
+# airmise-ng [![Version-shield]](https://raw.githubusercontent.com/EvilAirborn/airmise-ng/master/CHANGELOG.md) [![Bash4.2-shield]](http://tldp.org/LDP/abs/html/bashver4.html#AEN21220) [![License-shield]](https://raw.githubusercontent.com/EvilAirborn/airmise-ng/master/LICENSE.md) [![Docker-shield]](https://hub.docker.com/r/EvilAirborn/airmise-ng/)
 
 > This is a multi-use bash script for Linux systems to audit wireless networks.
+Donate To Paypal : mahin.airborn@gmail.com
+Donate    Bitcoin:  ??????????
 
-![Banner]
 
 ---
 
