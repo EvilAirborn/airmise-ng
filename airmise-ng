@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-#Title........: airmise-ng.sh
+#Title........: airmise-ng
 #Description..: This is a multi-use bash script for Linux systems to audit wireless networks.
 #Author.......: EvilAirborn
 #Date.........: 20170916
 #Version......: 7.21
-#Usage........: bash airmise-ng.sh
+#Usage........: bash airmise-ng
 #Bash Version.: 4.2 or later
 
 #Enabled with extra-verbose mode 2 / Enabled 1 / Disabled 0 - Debug mode for faster development skipping intro and initial checks - Default value 0
@@ -169,14 +169,14 @@ repository_hostname="github.com"
 github_user="EvilAirborn"
 github_repository="airmise-ng"
 branch="master"
-script_filename="airmise-ng.sh"
+script_filename="airmise-ng"
 urlgithub="https://${repository_hostname}/${github_user}/${github_repository}"
 urlscript_directlink="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${script_filename}"
 urlscript_pins_dbfile="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${known_pins_dbfile}"
 urlscript_pins_dbfile_checksum="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${pins_dbfile_checksum}"
 urlscript_language_strings_file="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${language_strings_file}"
 urlgithub_wiki="https://${repository_hostname}/${github_user}/${github_repository}/wiki"
-bitcoin="1AKnTXbomtwUzrm81FRzi5acSSXxGteGTH"
+bitcoin="1MYrM7B7DdUzMvPeMNFiZrfy3qECpPxXK8"
 mail="mahin.airborn@gmail.com"
 author="EvilAirborn"
 
