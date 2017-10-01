@@ -2,9 +2,9 @@
 #Title........: airmise-ng
 #Description..: This is a multi-use bash script for Linux systems to audit wireless networks.
 #Author.......: EvilAirborn
-#Date.........: 20170916
-#Version......: 7.21
-#Usage........: bash airmise-ng
+#Date.........: 20170930
+#Version......: 7.22
+#Usage........: ./airmise-ng
 #Bash Version.: 4.2 or later
 
 #Enabled with extra-verbose mode 2 / Enabled 1 / Disabled 0 - Debug mode for faster development skipping intro and initial checks - Default value 0
@@ -110,8 +110,8 @@ declare -A possible_alias_names=(
 								)
 
 #General vars
-airmise-ng_version="7.21"
-language_strings_expected_version="7.21-1"
+airmise_ng_version="7.22"
+language_strings_expected_version="7.22-1"
 standardhandshake_filename="handshake-01.cap"
 tmpdir="/tmp/"
 osversionfile_dir="/etc/"
@@ -208,7 +208,7 @@ beef_port="3000"
 beef_control_panel_url="http://127.0.0.1:${beef_port}/ui/panel"
 jshookfile="hook.js"
 beef_file="ag.beef.conf"
-beef_pass="airmise-ng"
+beef_pass="airmise_ng"
 beef_db="beef.db"
 beef_installation_url="https://github.com/beefproject/beef/wiki/Installation"
 hostapd_file="ag.hostapd.conf"
@@ -326,10 +326,10 @@ function check_language_strings() {
 
 		language_strings_handling_messages
 
-		generate_dynamic_line "airmise-ng" "title"
+		generate_dynamic_line "airmise_ng" "title"
 		if [ "${language_file_found}" -eq 0 ]; then
 			echo_red "${language_strings_no_file[${language}]}"
-			if [ "${airmise-ng_version}" = "6.1" ]; then
+			if [ "${airmise_ng_version}" = "6.1" ]; then
 				echo
 				echo_yellow "${language_strings_first_time[${language}]}"
 			fi
@@ -421,14 +421,14 @@ function language_strings_handling_messages() {
 	language_strings_file_mismatch["ITALIAN"]="Errore. Il file delle traduzioni trovato non è la versione prevista"
 
 	declare -gA language_strings_try_to_download
-	language_strings_try_to_download["ENGLISH"]="airmise-ng will try to download the language strings file..."
-	language_strings_try_to_download["SPANISH"]="airmise-ng intentará descargar el fichero de traducciones..."
-	language_strings_try_to_download["FRENCH"]="airmise-ng va essayer de télécharger les fichiers de traductions..."
-	language_strings_try_to_download["CATALAN"]="airmise-ng intentarà descarregar el fitxer de traduccions..."
-	language_strings_try_to_download["PORTUGUESE"]="O airmise-ng tentará baixar o arquivo de tradução..."
-	language_strings_try_to_download["RUSSIAN"]="airmise-ng попытается загрузить языковой файл..."
-	language_strings_try_to_download["GREEK"]="Το airmise-ng θα προσπαθήσει να κατεβάσει το αρχείο γλωσσών..."
-	language_strings_try_to_download["ITALIAN"]="airmise-ng cercherá di scaricare il file delle traduzioni..."
+	language_strings_try_to_download["ENGLISH"]="airmise_ng will try to download the language strings file..."
+	language_strings_try_to_download["SPANISH"]="airmise_ng intentará descargar el fichero de traducciones..."
+	language_strings_try_to_download["FRENCH"]="airmise_ng va essayer de télécharger les fichiers de traductions..."
+	language_strings_try_to_download["CATALAN"]="airmise_ng intentarà descarregar el fitxer de traduccions..."
+	language_strings_try_to_download["PORTUGUESE"]="O airmise_ng tentará baixar o arquivo de tradução..."
+	language_strings_try_to_download["RUSSIAN"]="airmise_ng попытается загрузить языковой файл..."
+	language_strings_try_to_download["GREEK"]="Το airmise_ng θα προσπαθήσει να κατεβάσει το αρχείο γλωσσών..."
+	language_strings_try_to_download["ITALIAN"]="airmise_ng cercherá di scaricare il file delle traduzioni..."
 
 	declare -gA language_strings_successfully_downloaded
 	language_strings_successfully_downloaded["ENGLISH"]="Language strings file was successfully downloaded"
@@ -451,24 +451,24 @@ function language_strings_handling_messages() {
 	language_strings_failed_downloading["ITALIAN"]="Impossibile scaricare il file delle traduzioni. Controlla la tua connessione a internet o scaricalo manualmente ${normal_color}${urlgithub}"
 
 	declare -gA language_strings_first_time
-	language_strings_first_time["ENGLISH"]="If you are seeing this message after an automatic update, don't be scared! It's probably because airmise-ng has different file structure since version 6.1. It will be automatically fixed"
-	language_strings_first_time["SPANISH"]="Si estás viendo este mensaje tras una actualización automática, ¡no te asustes! probablemente es porque a partir de la versión 6.1 la estructura de ficheros de airmise-ng ha cambiado. Se reparará automáticamente"
-	language_strings_first_time["FRENCH"]="Si vous voyez ce message après une mise à jour automatique ne vous inquiétez pas! A partir de la version 6.1 la structure de fichier d'airmise-ng a changé. L'ajustement se fera automatiquement"
-	language_strings_first_time["CATALAN"]="Si estàs veient aquest missatge després d'una actualització automàtica, no t'espantis! probablement és perquè a partir de la versió 6.1 l'estructura de fitxers de airmise-ng ha canviat. Es repararà automàticament"
-	language_strings_first_time["PORTUGUESE"]="Se você está vendo esta mensagem depois de uma atualização automática, não tenha medo! A partir da versão 6.1 da estrutura de arquivos do airmise-ng mudou. Isso será corrigido automaticamente"
-	language_strings_first_time["RUSSIAN"]="Если вы видите это сообщение после автоматического обновления, не переживайте! Вероятно, это объясняется тем, что, начиная с версии 6.1, airmise-ng имеет другую структуру файлов. Проблема будет разрешена автоматически"
-	language_strings_first_time["GREEK"]="Εάν βλέπετε αυτό το μήνυμα μετά από κάποια αυτόματη ενημέρωση, μην τρομάξετε! Πιθανόν είναι λόγω της διαφορετικής δομής του airmise-ng μετά από την έκδοση 6.1. Θα επιδιορθωθεί αυτόματα"
-	language_strings_first_time["ITALIAN"]="Se stai vedendo questo messaggio dopo un aggiornamento automatico, niente panico! probabilmente è perché a partire dalla versione 6.1 é cambiata la struttura dei file di airmise-ng. Sarà riparato automaticamente"
+	language_strings_first_time["ENGLISH"]="If you are seeing this message after an automatic update, don't be scared! It's probably because airmise_ng has different file structure since version 6.1. It will be automatically fixed"
+	language_strings_first_time["SPANISH"]="Si estás viendo este mensaje tras una actualización automática, ¡no te asustes! probablemente es porque a partir de la versión 6.1 la estructura de ficheros de airmise_ng ha cambiado. Se reparará automáticamente"
+	language_strings_first_time["FRENCH"]="Si vous voyez ce message après une mise à jour automatique ne vous inquiétez pas! A partir de la version 6.1 la structure de fichier d'airmise_ng a changé. L'ajustement se fera automatiquement"
+	language_strings_first_time["CATALAN"]="Si estàs veient aquest missatge després d'una actualització automàtica, no t'espantis! probablement és perquè a partir de la versió 6.1 l'estructura de fitxers de airmise_ng ha canviat. Es repararà automàticament"
+	language_strings_first_time["PORTUGUESE"]="Se você está vendo esta mensagem depois de uma atualização automática, não tenha medo! A partir da versão 6.1 da estrutura de arquivos do airmise_ng mudou. Isso será corrigido automaticamente"
+	language_strings_first_time["RUSSIAN"]="Если вы видите это сообщение после автоматического обновления, не переживайте! Вероятно, это объясняется тем, что, начиная с версии 6.1, airmise_ng имеет другую структуру файлов. Проблема будет разрешена автоматически"
+	language_strings_first_time["GREEK"]="Εάν βλέπετε αυτό το μήνυμα μετά από κάποια αυτόματη ενημέρωση, μην τρομάξετε! Πιθανόν είναι λόγω της διαφορετικής δομής του airmise_ng μετά από την έκδοση 6.1. Θα επιδιορθωθεί αυτόματα"
+	language_strings_first_time["ITALIAN"]="Se stai vedendo questo messaggio dopo un aggiornamento automatico, niente panico! probabilmente è perché a partire dalla versione 6.1 é cambiata la struttura dei file di airmise_ng. Sarà riparato automaticamente"
 
 	declare -gA language_strings_exiting
-	language_strings_exiting["ENGLISH"]="Exiting airmise-ng script v${airmise-ng_version} - See you soon! :)"
-	language_strings_exiting["SPANISH"]="Saliendo de airmise-ng script v${airmise-ng_version} - Nos vemos pronto! :)"
-	language_strings_exiting["FRENCH"]="Fermeture du script airmise-ng v${airmise-ng_version} - A bientôt! :)"
-	language_strings_exiting["CATALAN"]="Sortint de airmise-ng script v${airmise-ng_version} - Ens veiem aviat! :)"
-	language_strings_exiting["PORTUGUESE"]="Saindo do script airmise-ng v${airmise-ng_version} - Até breve! :)"
-	language_strings_exiting["RUSSIAN"]="Выход из скрипта airmise-ng v${airmise-ng_version} - До встречи! :)"
-	language_strings_exiting["GREEK"]="Κλείσιμο του airmise-ng v${airmise-ng_version} - Αντίο :)"
-	language_strings_exiting["ITALIAN"]="Uscendo dallo script airmise-ng v${airmise-ng_version} - A presto! :)"
+	language_strings_exiting["ENGLISH"]="Exiting airmise_ng script v${airmise_ng_version} - See you soon! :)"
+	language_strings_exiting["SPANISH"]="Saliendo de airmise_ng script v${airmise_ng_version} - Nos vemos pronto! :)"
+	language_strings_exiting["FRENCH"]="Fermeture du script airmise_ng v${airmise_ng_version} - A bientôt! :)"
+	language_strings_exiting["CATALAN"]="Sortint de airmise_ng script v${airmise_ng_version} - Ens veiem aviat! :)"
+	language_strings_exiting["PORTUGUESE"]="Saindo do script airmise_ng v${airmise_ng_version} - Até breve! :)"
+	language_strings_exiting["RUSSIAN"]="Выход из скрипта airmise_ng v${airmise_ng_version} - До встречи! :)"
+	language_strings_exiting["GREEK"]="Κλείσιμο του airmise_ng v${airmise_ng_version} - Αντίο :)"
+	language_strings_exiting["ITALIAN"]="Uscendo dallo script airmise_ng v${airmise_ng_version} - A presto! :)"
 
 	declare -gA language_strings_key_to_continue
 	language_strings_key_to_continue["ENGLISH"]="Press [Enter] key to continue..."
@@ -3428,7 +3428,7 @@ function print_hint() {
 	print_simple_separator
 }
 
-#airmise-ng main menu
+#airmise_ng main menu
 function main_menu() {
 
 	debug_print
@@ -6228,7 +6228,7 @@ function set_beef_config() {
 
 	{
 	echo -e "beef:"
-	echo -e "    version: 'airmise-ng integrated'"
+	echo -e "    version: 'airmise_ng integrated'"
 	echo -e "    debug: false"
 	echo -e "    client_debug: false"
 	echo -e "    crypto_default_value_length: 80"
@@ -6437,7 +6437,7 @@ function fix_beef_executable() {
 	rewrite_script_with_custom_beef "set" "${1}"
 }
 
-#Rewrite airmise-ng script in a polymorphic way adding custom beef location to array to get persistence
+#Rewrite airmise_ng script in a polymorphic way adding custom beef location to array to get persistence
 function rewrite_script_with_custom_beef() {
 
 	debug_print
@@ -9348,7 +9348,7 @@ function recalculate_windows_sizes() {
 	set_windows_sizes
 }
 
-#Detect if airmise-ng is working inside a docker container
+#Detect if airmise_ng is working inside a docker container
 function docker_detection() {
 
 	debug_print
@@ -9576,7 +9576,7 @@ function validate_et_internet_interface() {
 	return 0
 }
 
-#Check for access to airmise-ng repository
+#Check for access to airmise_ng repository
 function check_repository_access() {
 
 	debug_print
@@ -9684,16 +9684,16 @@ function autoupdate_check() {
 
 	if check_repository_access; then
 		local version_checked=0
-		airmise-ng_last_version=$(timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "airmise-ng_version=" | head -n 1 | cut -d "\"" -f 2)
+		airmise_ng_last_version=$(timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "airmise_ng_version=" | head -n 1 | cut -d "\"" -f 2)
 
-		if [ -n "${airmise-ng_last_version}" ]; then
+		if [ -n "${airmise_ng_last_version}" ]; then
 			version_checked=1
 		else
 			http_proxy_detect
 			if [ "${http_proxy_set}" -eq 1 ]; then
 
-				airmise-ng_last_version=$(timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} 2> /dev/null | grep "airmise-ng_version=" | head -n 1 | cut -d "\"" -f 2)
-				if [ -n "${airmise-ng_last_version}" ]; then
+				airmise_ng_last_version=$(timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} 2> /dev/null | grep "airmise_ng_version=" | head -n 1 | cut -d "\"" -f 2)
+				if [ -n "${airmise_ng_last_version}" ]; then
 					version_checked=1
 				else
 					language_strings "${language}" 5 "yellow"
@@ -9704,7 +9704,7 @@ function autoupdate_check() {
 		fi
 
 		if [ "${version_checked}" -eq 1 ]; then
-			if compare_floats_greater_than "${airmise-ng_last_version}" "${airmise-ng_version}"; then
+			if compare_floats_greater_than "${airmise_ng_last_version}" "${airmise_ng_version}"; then
 				language_strings "${language}" 213 "yellow"
 				download_last_version
 			else
