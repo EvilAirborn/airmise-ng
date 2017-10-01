@@ -2,7 +2,7 @@
 #Title........: language_strings.sh
 #Description..: All the translated strings that airmise-ng uses are located here.
 #Author.......: airmise-ng
-#Date.........: 20170909
+#Date.........: 20171001
 #Bash Version.: 4.2 or later
 
 #Set language_strings file version
@@ -11,7 +11,7 @@ function set_language_strings_version() {
 
 	debug_print
 
-	language_strings_version="7.21-1"
+	language_strings_version="7.23-1"
 }
 
 #Set different language text strings
