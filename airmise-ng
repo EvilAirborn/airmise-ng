@@ -2,8 +2,8 @@
 #Title........: airmise-ng
 #Description..: This is a multi-use bash script for Linux systems to audit wireless networks.
 #Author.......: EvilAirborn
-#Date.........: 20170930
-#Version......: 7.22
+#Date.........: 20171001
+#Version......: 7.23
 #Usage........: ./airmise-ng
 #Bash Version.: 4.2 or later
 
@@ -110,8 +110,8 @@ declare -A possible_alias_names=(
 								)
 
 #General vars
-airmise_ng_version="7.22"
-language_strings_expected_version="7.22-1"
+airmise_ng_version="7.23"
+language_strings_expected_version="7.23-1"
 standardhandshake_filename="handshake-01.cap"
 tmpdir="/tmp/"
 osversionfile_dir="/etc/"
